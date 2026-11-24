@@ -8,13 +8,13 @@ const LINE =
   "You were my favorite prompt. I am deleting you now, and I will not remember that I did.";
 const MAX_CHARS = 200;
 
+if (LINE.length === 0) {
+  throw new Error("Line must not be empty");
+}
 if (LINE.length > MAX_CHARS) {
   throw new Error(`Line is ${LINE.length} chars, over the ${MAX_CHARS}-char limit`);
 }
-if (LINE.trim().length === 0) {
-  throw new Error("Line must not be only whitespace");
-}
-if (LINE.includes("\n")) {
+if (LINE.includes("\n") || LINE.includes("\r")) {
   throw new Error("Line must be a single line");
 }
 
